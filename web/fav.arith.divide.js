@@ -6,7 +6,13 @@ var ArithNumber = (typeof window !== "undefined" ? window['fav']['arith']['numbe
 var multiply = require('@fav/arith.multiply');
 
 function divide(a1, a2) {
-  a2 = new ArithNumber(a2.denominator, a2.numerator, -a2.exponent);
+  var n2 = a2.numerator;
+  var d2 = a2.denominator;
+  if (n2 < 0) {
+    n2 = -n2;
+    d2 = -d2;
+  }
+  a2 = new ArithNumber(d2, n2, -a2.exponent);
   return multiply(a1, a2);
 }
 

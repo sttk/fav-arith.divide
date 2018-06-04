@@ -101,6 +101,17 @@ describe('fav.arith.divide', function() {
       expect(a3.exponent).to.equal(0);
       expect(a3.toApproximateString()).to.equal('1.5');
     });
+
+    it('Should return an accurate quotient even when 2nd term is negative',
+    function() {
+      var a1 = ArithNumber.of(9);
+      var a2 = ArithNumber.of(-6);
+      var a3 = divide(a1, a2);
+      expect(a3.numerator).to.equal(-9);
+      expect(a3.denominator).to.equal(6);
+      expect(a3.exponent).to.equal(0);
+      expect(a3.toApproximateString()).to.equal('-1.5');
+    });
   });
 
   describe('Divide decimals', function() {
@@ -144,6 +155,17 @@ describe('fav.arith.divide', function() {
       expect(a3.denominator).to.equal(21);
       expect(a3.exponent).to.equal(0);
       expect(a3.toApproximateString()).to.equal('0.04761904761904761904');
+    });
+
+    it('Should return an accurate quotient even when 2nd term is negative',
+    function() {
+      var a1 = new ArithNumber(123, 45, 2);
+      var a2 = new ArithNumber(-12, 99, 1);
+      var a3 = divide(a1, a2);
+      expect(a3.numerator).to.equal(-12177);
+      expect(a3.denominator).to.equal(540);
+      expect(a3.exponent).to.equal(1);
+      expect(a3.toApproximateString()).to.equal('-225.5');
     });
   });
 
@@ -218,4 +240,5 @@ describe('fav.arith.divide', function() {
       expect(a2.toApproximateString()).to.equal('0.26932340705058024961');
     });
   });
+
 });
